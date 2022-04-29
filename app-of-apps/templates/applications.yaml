@@ -3,6 +3,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  namespace: argocd
   name: {{ $key }}
   labels:
     stage: {{ required "A valid stage is required" $.Values.stage }}
