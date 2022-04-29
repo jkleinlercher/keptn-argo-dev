@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: all-apps-dev-1
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  labels:
+    stage: dev
+spec:
+  destination:
+    namespace: "*"
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: app-of-apps
+    repoURL: https://github.com/jkleinlercher/keptn-argo-dev
+    targetRevision: dev
+    helm:
+      valueFiles:
+        - values-dev-1-apps.yaml

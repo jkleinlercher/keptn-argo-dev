@@ -1,0 +1,5 @@
+apiVersion: v2
+name: app-of-apps
+description: Deploys argocd apps and namespaces
+version: 0.1.0
+appVersion: 0.1.0

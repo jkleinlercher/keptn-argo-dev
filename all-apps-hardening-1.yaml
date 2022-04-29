@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: all-apps-hardening-1
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  labels:
+    stage: hardening
+spec:
+  destination:
+    namespace: "*"
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: app-of-apps
+    repoURL: https://github.com/jkleinlercher/keptn-argo-dev
+    targetRevision: hardening
+    helm:
+      valueFiles:
+        - values-hardening-1-apps.yaml
