@@ -1,0 +1,11 @@
+# stage identifier of the app (dev, hardening, prod, ..)
+stage: ~
+
+# a list of namespaces which should be created
+namespaces: []
+
+# a list of argocd applications which should be created
+applications: []
+
+
+
