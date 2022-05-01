@@ -15,8 +15,13 @@ data:
         method: POST
         body: |
           {
-            "application": {{.app.metadata.name}}
+            "argocd app": {{.app.metadata.name}}
+            "keptn service": {{.app.metadata.labels.keptnService}}
             "stage": {{.app.metadata.labels.stage}}
+            "sync status": {{.app.status.sync.status}}
+            "operation status": {{.app.status.operationState.phase}}
+            "health status": {{.app.status.health.status}}
+            "revision": {{.app.status.sync.revision}}
           }
   trigger.on-out-of-sync-status: |
     - when: app.status.sync.status == 'OutOfSync'     # trigger condition
