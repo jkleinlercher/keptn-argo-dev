@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-notifications-cm
+  namespace: argocd
+data:
+  service.webhook.keptn: |
+    url: https://requestbin.net/r/etqpranx
+    headers: #optional headers
+    - name: keptn
+      value: test
+  template.keptn-outofsync: |
+    webhook:
+      keptn:
+        method: POST
+        body: |
+          {
+            "application": {{.app.metadata.name}}
+            "stage": {{.app.metadata.labels.stage}}
+          }
+  trigger.on-out-of-sync-status: |
+    - when: app.status.sync.status == 'OutOfSync'     # trigger condition
+      send: [keptn-outofsync]
