@@ -9,6 +9,7 @@ metadata:
   - resources-finalizer.argocd.argoproj.io
   labels:
     stage: dev
+    keptnService: all-apps
 spec:
   destination:
     namespace: "*"
