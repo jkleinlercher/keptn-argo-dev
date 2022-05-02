@@ -56,13 +56,14 @@ data:
             "specversion": "1.0",
             "type": "sh.keptn.event.deliver.finished",
             "shkeptnspecversion": "0.2.3",
+            {{$first := true}}
             {{- range $index,$value := .app.status.operationState.operation.info}}
-            {{- if eq $value.name "keptncontext"}}
-            "shkeptncontext": "{{$value.value}}",
-            {{- end}}
-            {{- if eq $value.name "triggerid"}}
-            "triggeredid": "{{$value.value}}",
-            {{- end}}
+              {{- if $first}}
+                  {{- $first = false}}
+              {{- else}}
+                  ,
+              {{- end}}
+            "{{$value.name}}": "{{$value.value}}"
             {{- end}}
           }
   trigger.on-out-of-sync-status: |
