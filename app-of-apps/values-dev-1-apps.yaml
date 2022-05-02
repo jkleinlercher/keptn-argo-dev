@@ -46,7 +46,7 @@ applications:
         helm:
           valueFiles:
           - values.yaml
-   podtato-head-tenant4-dev-1:
+  podtato-head-tenant4-dev-1:
     destination:
       namespace: podtato-head-tenant4-dev-1
       server: https://kubernetes.default.svc
