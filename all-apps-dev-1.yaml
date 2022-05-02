@@ -5,11 +5,13 @@ metadata:
   namespace: argocd
   annotations:
     notifications.argoproj.io/subscribe.on-out-of-sync-status.keptn: ""
+    notifications.argoproj.io/subscribe.on-deployed.keptn: ""
   finalizers:
   - resources-finalizer.argocd.argoproj.io
   labels:
     stage: dev
     keptnService: all-apps
+    keptnProject: argo-demo
 spec:
   destination:
     namespace: "*"
