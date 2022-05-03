@@ -3,6 +3,7 @@ stage: dev
 namespaces:
   - podtato-head-tenant1-dev-1
   - podtato-head-tenant2-dev-1
+  - podtato-head-tenant2-dev-1
 
 applications:
   podtato-head-tenant1-dev-1:
@@ -22,6 +23,20 @@ applications:
   podtato-head-tenant2-dev-1:
     destination:
       namespace: podtato-head-tenant2-dev-1
+      server: https://kubernetes.default.svc
+    project: default
+    source:
+      path: podtato-head
+      repoURL: https://github.com/jkleinlercher/keptn-argo-dev
+      targetRevision: dev
+      extraSourceFields: |
+        helm:
+          valueFiles:
+          - values.yaml
+    enableAutoSync: true
+  podtato-head-tenant3-dev-1:
+    destination:
+      namespace: podtato-head-tenant3-dev-1
       server: https://kubernetes.default.svc
     project: default
     source:
