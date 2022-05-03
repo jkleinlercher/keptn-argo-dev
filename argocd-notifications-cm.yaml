@@ -4,6 +4,8 @@ metadata:
   name: argocd-notifications-cm
   namespace: argocd
 data:
+  context: |
+    argocdUrl: https://34.71.113.40
   service.webhook.keptn: |
     url: https://axj73630.cloudautomation.sprint.dynatracelabs.com/api/v1/event
     #url: https://requestbin.net/r/cwvmsaa6
@@ -23,7 +25,8 @@ data:
               "image": "demo-service:0.1.0",
               "labels": {
                 "version": "{{.app.status.sync.revision}}",
-                "servicename": "{{.app.metadata.name}}"
+                "servicename": "{{.app.metadata.name}}",
+                "argocd_url": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}"
               },
               "project": "{{.app.metadata.labels.keptnProject}}",
               "service": "{{.app.metadata.labels.keptnService}}",
@@ -45,7 +48,8 @@ data:
               "image": "demo-service:0.1.0",
               "labels": {
                 "version": "{{.app.status.sync.revision}}",
-                "servicename": "{{.app.metadata.name}}"
+                "servicename": "{{.app.metadata.name}}",
+                "argocd_url": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}"
               },
               "project": "{{.app.metadata.labels.keptnProject}}",
               "service": "{{.app.metadata.labels.keptnService}}",
