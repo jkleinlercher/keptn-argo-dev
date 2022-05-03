@@ -18,6 +18,7 @@ applications:
         helm:
           valueFiles:
           - values.yaml
+      enableAutoSync: true
   podtato-head-tenant2-prod-1:
     destination:
       namespace: podtato-head-tenant2-prod-1
@@ -31,3 +32,4 @@ applications:
         helm:
           valueFiles:
           - values.yaml
+    enableAutoSync: true
