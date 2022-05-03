@@ -18,7 +18,7 @@ applications:
         helm:
           valueFiles:
           - values.yaml
-      enableAutoSync: true
+    enableAutoSync: true
   podtato-head-tenant2-hardening-1:
     destination:
       namespace: podtato-head-tenant2-hardening-1
