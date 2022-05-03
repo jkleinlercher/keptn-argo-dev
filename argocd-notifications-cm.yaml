@@ -7,11 +7,12 @@ data:
   context: |
     argocdUrl: https://34.71.113.40
   service.webhook.keptn: |
-    url: https://axj73630.cloudautomation.sprint.dynatracelabs.com/api/v1/event
+    #url: https://axj73630.cloudautomation.sprint.dynatracelabs.com/api/v1/event
+    url: https://inn12345.cloudautomation.dev.dynatracelabs.com/api/v1/event
     #url: https://requestbin.net/r/cwvmsaa6
     headers: #optional headers
     - name: x-token
-      value: 3IlL3CDOPgB7XJt14wUm4TgAarEIEgF6Gl0s9vb88N4eR
+      value: <Keptn Api Token>
     - name: Content-Type
       value: application/json
   template.keptn-outofsync: |
