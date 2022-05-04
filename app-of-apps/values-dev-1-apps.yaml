@@ -36,7 +36,7 @@ applications:
     enableAutoSync: true
   podtato-head-tenant4-dev-1:
     destination:
-      namespace: podtato-head-tenant3-dev-1
+      namespace: podtato-head-tenant4-dev-1
       server: https://kubernetes.default.svc
     project: default
     source:
