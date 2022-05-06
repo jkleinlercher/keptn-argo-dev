@@ -4,12 +4,15 @@ metadata:
   name: argocd-notifications-cm
   namespace: argocd
 data:
+  context: |
+    argocdUrl: https://34.71.113.40
   service.webhook.keptn: |
-    url: https://axj73630.cloudautomation.sprint.dynatracelabs.com/api/v1/event
+    #url: https://axj73630.cloudautomation.sprint.dynatracelabs.com/api/v1/event
+    url: https://inn12345.cloudautomation.dev.dynatracelabs.com/api/v1/event
     #url: https://requestbin.net/r/cwvmsaa6
     headers: #optional headers
     - name: x-token
-      value: 3IlL3CDOPgB7XJt14wUm4TgAarEIEgF6Gl0s9vb88N4eR
+      value: <Keptn Api Token>
     - name: Content-Type
       value: application/json
   template.keptn-outofsync: |
@@ -23,7 +26,8 @@ data:
               "image": "demo-service:0.1.0",
               "labels": {
                 "version": "{{.app.status.sync.revision}}",
-                "servicename": "{{.app.metadata.name}}"
+                "servicename": "{{.app.metadata.name}}",
+                "argocd_url": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}"
               },
               "project": "{{.app.metadata.labels.keptnProject}}",
               "service": "{{.app.metadata.labels.keptnService}}",
@@ -45,7 +49,8 @@ data:
               "image": "demo-service:0.1.0",
               "labels": {
                 "version": "{{.app.status.sync.revision}}",
-                "servicename": "{{.app.metadata.name}}"
+                "servicename": "{{.app.metadata.name}}",
+                "argocd_url": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}"
               },
               "project": "{{.app.metadata.labels.keptnProject}}",
               "service": "{{.app.metadata.labels.keptnService}}",
@@ -70,5 +75,5 @@ data:
     - when: app.status.sync.status == 'OutOfSync'
       send: [keptn-outofsync]
   trigger.on-deployed: |
-    - when: app.status.sync.status == 'Synced' and app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
+    - when: app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
       send: [keptn-deployed]
