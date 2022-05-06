@@ -4,6 +4,7 @@ namespaces:
   - podtato-head-tenant1-dev-1
   - podtato-head-tenant2-dev-1
   - podtato-head-tenant3-dev-1
+  - blablabla
 
 applications:
   podtato-head-tenant1-dev-1:
