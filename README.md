@@ -1,2 +1,2 @@
 # keptn-argo-dev
-example for keptn-argocd integration
+example for keptn-argocd integration   
