@@ -5,6 +5,7 @@ namespaces:
   - podtato-head-tenant2-dev-1
   - podtato-head-tenant3-dev-1
   - test1
+  - test123
 
 applications:
   podtato-head-tenant1-dev-1:
